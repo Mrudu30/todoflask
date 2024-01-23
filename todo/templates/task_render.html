@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/_all-skins.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap.css')}}">
+</head>
+<body>
+    <h1>
+        Welcome To Task note page
+    </h1>
+    <br>
+    {% for i in data %}
+    <table>
+        <thead>
+            <tr style="display: flex;">
+                <td>
+                  <h3 style="display: flex;">
+                    This is {{i[1]}} page
+                </h3>
+                </td>
+                <td style="display: flex;">
+                    <a href="/updatetask/{{ i[0]}}">
+                        <button type="button" class="btn btn-sm btn-warning btn-flat" title="Update"><span class="glyphicon glyphicon-pencil"></span></button>
+                      </a>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span>Note:</span>
+                    {{i[2]}}
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    {% endfor %}
+    <div>
+        <a href="/">
+            <button>Go Back</button>
+        </a>
+    </div>
+</body>
+</html>

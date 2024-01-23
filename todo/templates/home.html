@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/_all-skins.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap.css')}}">
+    </head>
+<body>
+    <h1>This is your TODO list</h1>
+    <a href="/add">
+        <button>Add task</button>
+    </a>
+    <table class="table table-bordered table-striped">
+        <thead align="center">
+            <tr>
+              <th>Task</th>
+              <th>View</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if data|length == 0 %}
+                  <tr>
+                    <td>No Data</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+            {% else %}
+                {% for i in data %}
+                  <tr>
+                    <td>{{i[1]}}</td>
+                    <td>
+                        <a href="/view/{{ i[0]}}">
+                            <button type="button" class="btn btn-sm btn-info btn-flat" title="Update"><span class="glyphicon glyphicon-eye-open"></span></button>
+                          </a>
+                    </td>
+                    <td>
+                        <a href="/updatetask/{{ i[0]}}">
+                            <button type="button" class="btn btn-sm btn-warning btn-flat" title="Update"><span class="glyphicon glyphicon-pencil"></span></button>
+                          </a>
+                    </td>
+                    <td>
+                          <a href="/delete/{{ i[0]}}">
+                            <button type="button" class="btn btn-sm btn-danger btn-flat" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
+                          </a>
+                    </td>
+                  </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+
+    </table>
+</body>
+</html>
