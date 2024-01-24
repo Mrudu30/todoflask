@@ -14,6 +14,7 @@ def home():
     return render_template('home.html',data=data)
 
 # ----------TASK VIEW---------
+
 @app.route('/view/<int:id>/')
 def view(id):
     try:
@@ -92,6 +93,12 @@ def deleteTask():
         return redirect(url_for('home'))
     else:
         return redirect(url_for('home'))
+
+# Catch-all route for invalid URLs
+@app.errorhandler(404)
+def page_not_found(e):
+    return redirect(url_for('home'))
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port = 2000,debug=True)
