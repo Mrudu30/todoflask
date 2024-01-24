@@ -10,7 +10,7 @@ db=Database()
 @app.route('/')
 def home():
     data=db.read(None)
-    print(data)
+    # print(data)
     return render_template('home.html',data=data)
 
 # ----------TASK VIEW---------
@@ -43,7 +43,7 @@ def addTask():
 @app.route('/updatetask/<int:id>/')
 def updateTask(id):
     data = db.read(id)
-    print(data)
+    # print(data)
 
     if len(data) == 0:
         return redirect(url_for('home'))

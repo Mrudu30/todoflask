@@ -10,20 +10,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap.css')}}">
 </head>
 <body>
-    <h1>
-        Welcome To Task note page
-    </h1>
-    <br>
     {% for i in data %}
-    <table>
+    <table class="table pd-3 table-bordered">
         <thead>
             <tr style="display: flex;">
                 <td>
-                  <h3 style="display: flex;">
-                    This is {{i[1]}} page
-                </h3>
+                    <h3 style="display: flex;">
+                        Task: {{i[1]}} page
+                    </h3>
                 </td>
-                <td style="display: flex;">
+                <td class="my-3">
                     <a href="/updatetask/{{ i[0]}}">
                         <button type="button" class="btn btn-sm btn-warning btn-flat" title="Update"><span class="glyphicon glyphicon-pencil"></span></button>
                       </a>
@@ -36,13 +32,18 @@
                     <span>Note:</span>
                     {{i[2]}}
                 </td>
-
+            </tr>
+            <tr>
+                <td>
+                    <span>Status:</span>
+                    {{i[3]}}
+                </td>
             </tr>
         </tbody>
     </table>
 
     {% endfor %}
-    <div>
+    <div style="margin:5px">
         <a href="/">
             <button>Go Back</button>
         </a>

@@ -8,16 +8,52 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/AdminLTE.min.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/_all-skins.min.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dataTables.bootstrap.css')}}">
-    </head>
+    <style>
+      th{
+        font-size: 25px;
+      }
+      tr{
+        font-size: 17px;
+        text-transform: capitalize;
+      }
+      table{
+        padding: 5px;
+        margin-left: 20px;
+      }
+      .main-header{
+        font-size: large;
+      }
+    </style>
+  </head>
 <body>
-    <h1>This is your TODO list</h1>
-    <a href="/add">
-        <button>Add task</button>
-    </a>
-    <table class="table table-bordered table-striped">
+  <div class="wrapper">
+    <div class="main-header bg-primary">
+      <nav class="navbar navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="/" class="navbar-brand"><b>Todo</b>list</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+      <section class="content">
+        <div class="box box-primary">
+          <div class="box-header">
+            <a href="/add">
+              <center>
+                <button type="button" class="btn btn-primary btn-flat">
+                  <span class="glyphicon glyphicon-plus"></span> Add Task
+                </button>
+              </center>
+            </a>
+          </div>
+
+    <table class="mx-auto d-block table table-bordered table-striped">
         <thead align="center">
             <tr>
               <th>Task</th>
+              <th>Status</th>
               <th>View</th>
               <th>Edit</th>
               <th>Delete</th>
@@ -35,6 +71,7 @@
                 {% for i in data %}
                   <tr>
                     <td>{{i[1]}}</td>
+                    <td>{{i[3]}}</td>
                     <td>
                         <a href="/view/{{ i[0]}}">
                             <button type="button" class="btn btn-sm btn-info btn-flat" title="Update"><span class="glyphicon glyphicon-eye-open"></span></button>
@@ -56,5 +93,6 @@
         </tbody>
 
     </table>
+    </div>
 </body>
 </html>
